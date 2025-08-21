@@ -1,1114 +1,686 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;">
-<head>
-    <!-- ... (cabeçalho mantido igual) ... -->
-    <style>
-        .main-header {
-            width: 100vw;
-            background: #fff;
-            box-shadow: 0 2px 16px #0002;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10;
-        }
-        .main-header .u-sheet-1 {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.5rem 2rem;
-        }
-        .main-header nav {
-            flex: 1;
-        }
-        .main-header ul.u-nav-1 {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .main-header ul.u-nav-1 li {
-            font-size: 1.1rem;
-        }
-        .main-header ul.u-nav-1 a {
-            color: #232526;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
-        }
-        .main-header ul.u-nav-1 a:hover, .main-header ul.u-nav-1 .active {
-            background: #232526;
-            color: #fff;
-        }
-        .main-header .u-logo-image-1 {
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            box-shadow: 0 2px 10px #0002;
-        }
-        .hero-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 3rem;
-            min-height: 70vh;
-            background: #fff;
-            margin-top: 80px;
-            padding: 2rem 0;
-        }
-        .hero-text {
-            max-width: 500px;
-        }
-        .hero-text h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #232b79;
-            margin-bottom: 1.2rem;
-        }
-        .hero-text p {
-            font-size: 1.1rem;
-            color: #232526;
-            margin-bottom: 1.5rem;
-        }
-        .hero-text .highlight {
-            font-weight: bold;
-            color: #232b79;
-            margin-bottom: 1rem;
-        }
-        .contact-btn {
-            background: #232b79;
-            color: #fff;
-            border: none;
-            padding: 0.8rem 2rem;
-            font-size: 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 10px #0002;
-            transition: background 0.3s;
-        }
-        .contact-btn:hover {
-            background: #ff9800;
-            color: #232526;
-        }
-        .hero-photo {
-            width: 320px;
-            height: 420px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px #232b7922;
-            background: #f5f5f5;
-        }
-        @media (max-width: 900px) {
-            .hero-section {
-                flex-direction: column;
-                gap: 2rem;
-                min-height: 60vh;
-            }
-            .hero-photo {
-                width: 90vw;
-                height: auto;
-                max-width: 320px;
-            }
-        }
-        .hero-3d h1 {
-            font-size: 3.2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #ff9800;
-            text-shadow: 0 2px 20px #000a;
-        }
-        .hero-3d .subtitle {
-            font-size: 1.7rem;
-            font-weight: 500;
-            color: #fff;
-            margin-bottom: 1.2rem;
-            text-shadow: 0 2px 10px #0007;
-        }
-        .hero-3d .about {
-            font-size: 1.1rem;
-            color: #e0e0e0;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-        }
-        .section-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.7rem;
-            font-size: 2rem;
-            color: #ff9800;
-            margin-bottom: 2rem;
-        }
-        .section-title i {
-            font-size: 2.2rem;
-        }
-        .experience-list li {
-            margin-bottom: 1.2rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.7rem;
-        }
-        .experience-list li i {
-            color: #ff9800;
-            font-size: 1.3rem;
-            margin-top: 2px;
-        }
-        .project-card h3 {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .project-card h3 i {
-            color: #ff9800;
-            font-size: 1.2rem;
-        }
-        #three-canvas {
-            width: 100vw;
-            height: 60vh;
-            display: block;
-            background: transparent;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        .hero-3d {
-            position: absolute;
-            top: 10vh;
-            left: 0;
-            width: 100vw;
-            text-align: center;
-            z-index: 2;
-            color: #fff;
-        }
-        .hero-3d h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 20px #000a;
-        }
-        .hero-3d p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        .cta-btn {
-            background: #ff9800;
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 2px 10px #0005;
-            transition: background 0.3s;
-        }
-        .cta-btn:hover {
-            background: #e65100;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
-    <script>
-    window.addEventListener('DOMContentLoaded', () => {
-        // Three.js 3D Animation
-        const scene = new THREE.Scene();
-        scene.background = null;
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.6), 0.1, 1000);
-        camera.position.z = 5;
-
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
-        const canvas = renderer.domElement;
-        canvas.id = 'three-canvas';
-        document.body.prepend(canvas);
-
-        // 3D Object: Rotating Torus Knot
-        const geometry = new THREE.TorusKnotGeometry(1, 0.4, 120, 16);
-        const material = new THREE.MeshStandardMaterial({ color: 0xff9800, metalness: 0.7, roughness: 0.2 });
-        const torusKnot = new THREE.Mesh(geometry, material);
-        scene.add(torusKnot);
-
-        // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-        scene.add(ambientLight);
-        const pointLight = new THREE.PointLight(0xff9800, 1, 100);
-        pointLight.position.set(5, 5, 5);
-        scene.add(pointLight);
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            torusKnot.rotation.x += 0.01;
-            torusKnot.rotation.y += 0.015;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Responsive resize
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
-        });
-    });
-    </script>
-</head>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(120deg, #232526 0%, #414345 100%);
-            color: #fff;
-        }
-        .main-header {
-            width: 100vw;
-            background: rgba(30, 30, 30, 0.97);
-            box-shadow: 0 2px 16px #0005;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10;
-        }
-        .main-header .u-sheet-1 {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.5rem 2rem;
-        }
-        .main-header nav {
-            flex: 1;
-        }
-        .main-header ul.u-nav-1 {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .main-header ul.u-nav-1 li {
-            font-size: 1.1rem;
-        }
-        .main-header ul.u-nav-1 a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: background 0.2s;
-        }
-        .main-header ul.u-nav-1 a:hover {
-            background: #ff9800;
-            color: #232526;
-        }
-        .main-header .u-logo-image-1 {
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            box-shadow: 0 2px 10px #0005;
-        }
-        #three-canvas {
-            width: 100vw;
-            height: 60vh;
-            display: block;
-            background: transparent;
-            position: relative;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        .hero-3d {
-            position: relative;
-            top: 0;
-            width: 100vw;
-            text-align: center;
-            z-index: 2;
-            color: #fff;
-            margin-top: 10vh;
-            margin-bottom: 0;
-        }
-        .hero-3d h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 20px #000a;
-        }
-        .hero-3d p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        .cta-btn {
-            background: #ff9800;
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 2px 10px #0005;
-            transition: background 0.3s;
-        }
-        .cta-btn:hover {
-            background: #e65100;
-        }
-        .experience-section {
-            margin: 4rem auto 2rem auto;
-            max-width: 900px;
-            background: #2c2c2c;
-            border-radius: 16px;
-            box-shadow: 0 2px 16px #0005;
-            padding: 2rem;
-            text-align: left;
-        }
-        .experience-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #ff9800;
-        }
-        .experience-list {
-            list-style: none;
-            padding: 0;
-        }
-        .experience-list li {
-            margin-bottom: 1.2rem;
-            font-size: 1.1rem;
-        }
-        .projects-section {
-            margin: 2rem auto 2rem auto;
-            max-width: 1200px;
-            padding: 3rem 0 2rem 0;
-            background: #232526;
-            color: #fff;
-            text-align: center;
-            border-radius: 16px;
-        }
-        .projects-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #ff9800;
-        }
-        .projects-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-        }
-        .project-card {
-            background: #2c2c2c;
-            border-radius: 16px;
-            box-shadow: 0 2px 16px #0005;
-            width: 340px;
-            padding: 1.5rem;
-            text-align: left;
-            transition: transform 0.2s;
-        }
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.03);
-        }
-        .project-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-        .project-card h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.3rem;
-        }
-        .project-card p {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        .project-card a {
-            color: #ff9800;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        @media (max-width: 900px) {
-            .projects-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-            .main-header .u-sheet-1 {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .experience-section, .projects-section {
-                max-width: 98vw;
-                padding: 1rem;
-            }
-        }
-    </style>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(120deg, #232526 0%, #414345 100%);
-            color: #fff;
-        }
-        .main-header {
-            width: 100vw;
-            background: rgba(30, 30, 30, 0.95);
-            box-shadow: 0 2px 16px #0005;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10;
-        }
-        .main-header .u-sheet-1 {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.5rem 2rem;
-        }
-        .main-header nav {
-            flex: 1;
-        }
-        .main-header ul.u-nav-1 {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .main-header ul.u-nav-1 li {
-            font-size: 1.1rem;
-        }
-        .main-header ul.u-nav-1 a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: background 0.2s;
-        }
-        .main-header ul.u-nav-1 a:hover {
-            background: #ff9800;
-            color: #232526;
-        }
-        .main-header .u-logo-image-1 {
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            box-shadow: 0 2px 10px #0005;
-        }
-        #three-canvas {
-            width: 100vw;
-            height: 60vh;
-            display: block;
-            background: transparent;
-            position: relative;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        .hero-3d {
-            position: relative;
-            top: -40vh;
-            width: 100vw;
-            text-align: center;
-            z-index: 2;
-            color: #fff;
-            margin-bottom: -20vh;
-        }
-        .hero-3d h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 20px #000a;
-        }
-        .hero-3d p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        .cta-btn {
-            background: #ff9800;
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 2px 10px #0005;
-            transition: background 0.3s;
-        }
-        .cta-btn:hover {
-            background: #e65100;
-        }
-        .projects-section {
-            margin-top: 2rem;
-            padding: 3rem 0 2rem 0;
-            background: #232526;
-            color: #fff;
-            text-align: center;
-        }
-        .projects-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-        .projects-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-        }
-        .project-card {
-            background: #2c2c2c;
-            border-radius: 16px;
-            box-shadow: 0 2px 16px #0005;
-            width: 340px;
-            padding: 1.5rem;
-            text-align: left;
-            transition: transform 0.2s;
-        }
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.03);
-        }
-        .project-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-        .project-card h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.3rem;
-        }
-        .project-card p {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        .project-card a {
-            color: #ff9800;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        @media (max-width: 900px) {
-            .projects-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-            .main-header .u-sheet-1 {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
-    <style>
-        #three-canvas {
-            width: 100vw;
-            height: 60vh;
-            display: block;
-            background: transparent;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        .hero-3d {
-            position: absolute;
-            top: 10vh;
-            left: 0;
-            width: 100vw;
-            text-align: center;
-            z-index: 2;
-            color: #fff;
-        }
-        .hero-3d h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 20px #000a;
-        }
-        .hero-3d p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        .cta-btn {
-            background: #ff9800;
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 2px 10px #0005;
-            transition: background 0.3s;
-        }
-        .cta-btn:hover {
-            background: #e65100;
-        }
-        .projects-section {
-            margin-top: 65vh;
-            padding: 3rem 0 2rem 0;
-            background: #232526;
-            color: #fff;
-            text-align: center;
-        }
-        .projects-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-        .projects-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-        }
-        .project-card {
-            background: #2c2c2c;
-            border-radius: 16px;
-            box-shadow: 0 2px 16px #0005;
-            width: 340px;
-            padding: 1.5rem;
-            text-align: left;
-            transition: transform 0.2s;
-        }
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.03);
-        }
-        .project-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-        .project-card h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.3rem;
-        }
-        .project-card p {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        .project-card a {
-            color: #ff9800;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
-    <script>
-    window.addEventListener('DOMContentLoaded', () => {
-        // Three.js 3D Animation
-        const scene = new THREE.Scene();
-        scene.background = null;
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.6), 0.1, 1000);
-        camera.position.z = 5;
-
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
-        const canvas = renderer.domElement;
-        canvas.id = 'three-canvas';
-        document.body.prepend(canvas);
-
-        // 3D Object: Rotating Torus Knot
-        const geometry = new THREE.TorusKnotGeometry(1, 0.4, 120, 16);
-        const material = new THREE.MeshStandardMaterial({ color: 0xff9800, metalness: 0.7, roughness: 0.2 });
-        const torusKnot = new THREE.Mesh(geometry, material);
-        scene.add(torusKnot);
-
-        // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-        scene.add(ambientLight);
-        const pointLight = new THREE.PointLight(0xff9800, 1, 100);
-        pointLight.position.set(5, 5, 5);
-        scene.add(pointLight);
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            torusKnot.rotation.x += 0.01;
-            torusKnot.rotation.y += 0.015;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Responsive resize
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
-        });
-    });
-    </script>
-<body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
-    <header class="main-header">
-        <div class="u-sheet-1">
-            <a href="Home.html" data-page-id="734010139" class="u-image u-logo u-image-1" data-image-width="308" data-image-height="53">
-                <img src="images/joseph-Photoroom.png" class="u-logo-image u-logo-image-1">
-            </a>
-            <nav>
-                <div class="u-custom-menu u-nav-container">
-                    <ul class="u-nav u-nav-1">
-                        <li class="u-nav-item"><a href="Home.html" class="active">HOME</a></li>
-                        <li class="u-nav-item"><a href="#sobre">SOBRE</a></li>
-                        <li class="u-nav-item"><a href="#contacto">CONTACTO</a></li>
-                        <li class="u-nav-item u-nav-dropdown">
-                            <a href="#">💻 PROJECTOS ▾</a>
-                            <ul class="u-nav u-nav-2" style="background: #fff; border-radius: 8px; padding: 1rem; position: absolute; display: none; box-shadow: 0 2px 16px #0002;">
-                                <li style="font-weight: bold; color: #232b79;">🌐 Websites Institucionais</li>
-                                <li><a href="https://mozmec.co.mz/" target="_blank">MozMEC</a></li>
-                                <li><a href="https://lifenutricsmozambique.co.mz/" target="_blank">Life Nutrics Mozambique</a></li>
-                                <li><a href="https://asea.co.mz/asea/" target="_blank">ASEA Moçambique</a></li>
-                                <li><a href="https://nata.midia.co.mz/" target="_blank">Nata Midia</a></li>
-                                <li style="font-weight: bold; color: #232b79; margin-top: 1rem;">🛍️ E-commerces</li>
-                                <li><a href="https://bellahealthy.co.mz/" target="_blank">Bella Healthy</a></li>
-                                <li><a href="https://lojatecnoland.com/" target="_blank">Loja TecnoLand</a></li>
-                                <li style="font-weight: bold; color: #232b79; margin-top: 1rem;">🧩 Sistemas de Gestão</li>
-                                <li><a href="https://acfinance.online/" target="_blank">Microcrédito (ACFinance)</a></li>
-                                <li><a href="https://agua-gestao.actecn.com/" target="_blank">Gestão de Água</a></li>
-                                <li><a href="https://barcandy.actecn.com/" target="_blank">Gestão de BarCandy</a></li>
-                                <li><a href="http://renato.actecn.com/" target="_blank">Gestão de Seguros</a></li>
-                                <li><a href="https://sistema.lrptecnologia.com.br/" target="_blank">ERP LRP Tecnologia</a></li>
-                                <li><a href="https://pdvdemo.innotechh.com/" target="_blank">Sistema de PDV (Point of Sale)</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <section class="hero-section" id="sobre">
-        <div class="hero-text">
-            <h1>José Junito Alberto Machava</h1>
-            <p>Sou um profissional, apaixonado pela tecnologia e suas aplicações para melhorar a vida das pessoas e das empresas. Com uma licenciatura em Informática, tenho conhecimentos sólidos em linguagens de programação, arquitetura de sistemas, bancos de dados, desenvolvimento web e mobile, entre outras áreas relevantes. Minha ética de trabalho é baseada em comprometimento, responsabilidade e respeito aos prazos e expectativas dos meus clientes.<br><br>Estou sempre em busca de atualizações e aprimoramentos para garantir a qualidade do meu trabalho e a satisfação dos meus clientes.</p>
-            <div class="highlight">Sou apaixonado por ensinar e aprender.</div>
-            <a href="#contacto"><button class="contact-btn">ENTRAR EM CONTACTO</button></a>
-        </div>
-        <img src="images/joseph-Photoroom.png" alt="Foto Jose Machava" class="hero-photo">
-    </section>
-    <header class="main-header">
-        <div class="u-sheet-1">
-            <a href="Home.html" data-page-id="734010139" class="u-image u-logo u-image-1" data-image-width="308" data-image-height="53">
-                <img src="images/joseph-Photoroom.png" class="u-logo-image u-logo-image-1">
-            </a>
-            <nav>
-                <div class="u-custom-menu u-nav-container">
-                    <ul class="u-nav u-nav-1">
-                        <li class="u-nav-item"><a href="Home.html">Home</a></li>
-                        <li class="u-nav-item"><a href="Home.html#carousel_ca96">Sobre</a></li>
-                        <li class="u-nav-item"><a href="Home.html#carousel_f817">Contacto</a></li>
-                        <li class="u-nav-item u-nav-dropdown">
-                            <a href="#">🚀 Projectos ▾</a>
-                            <ul class="u-nav u-nav-2" style="background: #2c2c2c; border-radius: 8px; padding: 1rem; position: absolute; display: none;">
-                                <li style="font-weight: bold; color: #ff9800;">🌐 Websites Institucionais</li>
-                                <li><a href="https://mozmec.co.mz/" target="_blank">MozMEC</a></li>
-                                <li><a href="https://lifenutricsmozambique.co.mz/" target="_blank">Life Nutrics Mozambique</a></li>
-                                <li><a href="https://asea.co.mz/asea/" target="_blank">ASEA Moçambique</a></li>
-                                <li><a href="https://nata.midia.co.mz/" target="_blank">Nata Midia</a></li>
-                                <li style="font-weight: bold; color: #ff9800; margin-top: 1rem;">🛍️ E-commerces</li>
-                                <li><a href="https://bellahealthy.co.mz/" target="_blank">Bella Healthy</a></li>
-                                <li><a href="https://lojatecnoland.com/" target="_blank">Loja TecnoLand</a></li>
-                                <li style="font-weight: bold; color: #ff9800; margin-top: 1rem;">🧩 Sistemas de Gestão</li>
-                                <li><a href="https://acfinance.online/" target="_blank">Microcrédito (ACFinance)</a></li>
-                                <li><a href="https://agua-gestao.actecn.com/" target="_blank">Gestão de Água</a></li>
-                                <li><a href="https://barcandy.actecn.com/" target="_blank">Gestão de BarCandy</a></li>
-                                <li><a href="http://renato.actecn.com/" target="_blank">Gestão de Seguros</a></li>
-                                <li><a href="https://sistema.lrptecnologia.com.br/" target="_blank">ERP LRP Tecnologia</a></li>
-                                <li><a href="https://pdvdemo.innotechh.com/" target="_blank">Sistema de PDV (Point of Sale)</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <div id="three-canvas-container">
-        <canvas id="three-canvas"></canvas>
-    </div>
-    <div class="hero-3d">
-    <h1>Jose Machava</h1>
-    <div class="subtitle">Desenvolvedor Web & Especialista em Soluções Digitais</div>
-    <div class="about">Apaixonado por tecnologia, atuo há mais de 7 anos desenvolvendo sistemas web, dashboards e soluções digitais para empresas e instituições. Meu foco é entregar resultados com inovação, segurança e design moderno.</div>
-    <button class="cta-btn" onclick="document.querySelector('.experience-section').scrollIntoView({behavior: 'smooth'})">Ver Experiência</button>
-    </div>
-    <section class="experience-section">
-        <div class="section-title"><i>💼</i> Experiência Profissional</div>
-        <ul class="experience-list">
-            <li><i>🧩</i><strong>Microcrédito (ACFinance):</strong> Desenvolvimento de sistema de gestão de microcrédito online, dashboards financeiros e relatórios.</li>
-            <li><i>🧩</i><strong>ERP LRP Tecnologia:</strong> Criação de ERP completo para gestão empresarial, dashboards interativos e controle de processos.</li>
-            <li><i>🧩</i><strong>Gestão de Água:</strong> Sistema para gestão de consumo e faturação de água, painel administrativo intuitivo.</li>
-            <li><i>🧩</i><strong>Gestão de BarCandy:</strong> Plataforma para gestão de bares e inventário, dashboard de vendas e estoque.</li>
-            <li><i>🌐</i><strong>MozMEC:</strong> Website institucional para o Ministério da Educação, design responsivo e moderno.</li>
-            <li><i>🧩</i><strong>Gestão de Seguros:</strong> Sistema para gestão de apólices e clientes, dashboard de acompanhamento.</li>
-        </ul>
-    </section>
-    <section class="projects-section">
-    <div class="section-title"><i>🚀</i> Meus Projectos</div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <img src="images/acfinance.png" alt="ACFinance Dashboard">
-                <h3><i>🧩</i> Microcrédito (ACFinance)</h3>
-                <p>Sistema de gestão de microcrédito online, com dashboard moderno e relatórios financeiros.</p>
-                <a href="https://acfinance.online/" target="_blank">Ver Projeto</a>
-            </div>
-            <div class="project-card">
-                <img src="images/intellica.png" alt="Intellica Dashboard">
-                <h3><i>🧩</i> ERP LRP Tecnologia</h3>
-                <p>ERP completo para gestão empresarial, com dashboards interativos e controle de processos.</p>
-                <a href="https://sistema.lrptecnologia.com.br/" target="_blank">Ver Projeto</a>
-            </div>
-            <div class="project-card">
-                <img src="images/up.png" alt="Gestão de Água">
-                <h3><i>🧩</i> Gestão de Água</h3>
-                <p>Sistema para gestão de consumo e faturação de água, com painel administrativo intuitivo.</p>
-                <a href="https://agua-gestao.actecn.com/" target="_blank">Ver Projeto</a>
-            </div>
-            <div class="project-card">
-                <img src="images/up12.png" alt="BarCandy Dashboard">
-                <h3><i>🧩</i> Gestão de BarCandy</h3>
-                <p>Plataforma para gestão de bares e inventário, com dashboard de vendas e estoque.</p>
-                <a href="https://barcandy.actecn.com/" target="_blank">Ver Projeto</a>
-            </div>
-            <div class="project-card">
-                <img src="images/GIZ-logo-modified.png" alt="MozMEC">
-                <h3><i>🌐</i> MozMEC</h3>
-                <p>Website institucional para o Ministério da Educação, com design responsivo e moderno.</p>
-                <a href="https://mozmec.co.mz/" target="_blank">Ver Projeto</a>
-            </div>
-            <div class="project-card">
-                <img src="images/acfinance.png" alt="Gestão de Seguros">
-                <h3><i>🧩</i> Gestão de Seguros</h3>
-                <p>Sistema para gestão de apólices e clientes, com dashboard de acompanhamento.</p>
-                <a href="http://renato.actecn.com/" target="_blank">Ver Projeto</a>
-            </div>
-        </div>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
-    <script>
-    // Dropdown menu interatividade
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdown = document.querySelector('.u-nav-dropdown');
-        const submenu = dropdown.querySelector('.u-nav-2');
-        dropdown.addEventListener('mouseenter', () => submenu.style.display = 'block');
-        dropdown.addEventListener('mouseleave', () => submenu.style.display = 'none');
-    });
-    // Three.js 3D Animation
-    window.addEventListener('DOMContentLoaded', () => {
-        const scene = new THREE.Scene();
-        scene.background = null;
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.6), 0.1, 1000);
-        camera.position.z = 5;
-        const renderer = new THREE.WebGLRenderer({ alpha: true, canvas: document.getElementById('three-canvas') });
-        renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
-        // 3D Object: Rotating Torus Knot
-        const geometry = new THREE.TorusKnotGeometry(1, 0.4, 120, 16);
-        const material = new THREE.MeshStandardMaterial({ color: 0xff9800, metalness: 0.7, roughness: 0.2 });
-        const torusKnot = new THREE.Mesh(geometry, material);
-        scene.add(torusKnot);
-        // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-        scene.add(ambientLight);
-        const pointLight = new THREE.PointLight(0xff9800, 1, 100);
-        pointLight.position.set(5, 5, 5);
-        scene.add(pointLight);
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            torusKnot.rotation.x += 0.01;
-            torusKnot.rotation.y += 0.015;
-            renderer.render(scene, camera);
-        }
-        animate();
-        // Responsive resize
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
-        });
-    });
-    </script>
-    <div class="hero-3d">
-        <h1>Jose Machava</h1>
-        <p>Desenvolvedor Web & Especialista em Soluções Digitais</p>
-        <button class="cta-btn" onclick="document.querySelector('.projects-section').scrollIntoView({behavior: 'smooth'})">Ver Projetos</button>
-    </div>
-    <div class="hero-3d">
-        <h1>Jose Machava</h1>
-        <p>Desenvolvedor Web & Especialista em Soluções Digitais</p>
-        <button class="cta-btn" onclick="window.location.href='blog/blog.html'">Ver Projetos</button>
-    </div>
-    <header class="u-clearfix u-header u-header" id="sec-a184">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
-                <!-- ... (navegação mantida) ... -->
-                <div class="u-custom-menu u-nav-container">
-                    <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
-                        <li class="u-nav-item"><a class="u-active-palette-1-base u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="Home.html" style="padding: 10px 20px;">Home</a></li>
-                        <li class="u-nav-item"><a class="u-active-palette-1-base u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="Home.html#carousel_ca96" data-page-id="734010139" style="padding: 10px 20px;">Sobre</a></li>
-                        <li class="u-nav-item"><a class="u-active-palette-1-base u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="Home.html#carousel_f817" data-page-id="734010139" style="padding: 10px 20px;">Contacto</a></li>
-                        <li class="u-nav-item u-nav-dropdown">
-                            <a class="u-nav-link u-button-style u-text-grey-90 u-text-hover-white u-text-active-white u-hover-palette-1-light-1" href="#" style="padding: 10px 20px; font-weight: bold;">
-                                🚀 Projectos ▾
-                            </a>
-                            <div class="u-nav-popup" style="background-color: #f9f9f9; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 250px;">
-                                <ul class="u-nav u-unstyled u-nav-2" style="padding: 10px 15px;">
-                                    
-                                    <header class="main-header">
-                                        <div class="u-sheet-1">
-                                            <a href="Home.html" data-page-id="734010139" class="u-image u-logo u-image-1" data-image-width="308" data-image-height="53">
-                                                <img src="images/joseph-Photoroom.png" class="u-logo-image u-logo-image-1">
-                                            </a>
-                                            <nav>
-                                                <div class="u-custom-menu u-nav-container">
-                                                    <ul class="u-nav u-nav-1">
-                                                        <li class="u-nav-item"><a href="Home.html">Home</a></li>
-                                                        <li class="u-nav-item"><a href="Home.html#carousel_ca96">Sobre</a></li>
-                                                        <li class="u-nav-item"><a href="Home.html#carousel_f817">Contacto</a></li>
-                                                        <li class="u-nav-item u-nav-dropdown">
-                                                            <a href="#">🚀 Projectos ▾</a>
-                                                            <ul class="u-nav u-nav-2" style="background: #2c2c2c; border-radius: 8px; padding: 1rem; position: absolute; display: none;">
-                                                                <li style="font-weight: bold; color: #ff9800;">🌐 Websites Institucionais</li>
-                                                                <li><a href="https://mozmec.co.mz/" target="_blank">MozMEC</a></li>
-                                                                <li><a href="https://lifenutricsmozambique.co.mz/" target="_blank">Life Nutrics Mozambique</a></li>
-                                                                <li><a href="https://asea.co.mz/asea/" target="_blank">ASEA Moçambique</a></li>
-                                                                <li><a href="https://nata.midia.co.mz/" target="_blank">Nata Midia</a></li>
-                                                                <li style="font-weight: bold; color: #ff9800; margin-top: 1rem;">🛍️ E-commerces</li>
-                                                                <li><a href="https://bellahealthy.co.mz/" target="_blank">Bella Healthy</a></li>
-                                                                <li><a href="https://lojatecnoland.com/" target="_blank">Loja TecnoLand</a></li>
-                                                                <li style="font-weight: bold; color: #ff9800; margin-top: 1rem;">🧩 Sistemas de Gestão</li>
-                                                                <li><a href="https://acfinance.online/" target="_blank">Microcrédito (ACFinance)</a></li>
-                                                                <li><a href="https://agua-gestao.actecn.com/" target="_blank">Gestão de Água</a></li>
-                                                                <li><a href="https://barcandy.actecn.com/" target="_blank">Gestão de BarCandy</a></li>
-                                                                <li><a href="http://renato.actecn.com/" target="_blank">Gestão de Seguros</a></li>
-                                                                <li><a href="https://sistema.lrptecnologia.com.br/" target="_blank">ERP LRP Tecnologia</a></li>
-                                                                <li><a href="https://pdvdemo.innotechh.com/" target="_blank">Sistema de PDV (Point of Sale)</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </nav>
-                                        </div>
-                                    </header>
-                                    <div id="three-canvas-container">
-                                        <canvas id="three-canvas"></canvas>
-                                    </div>
-                                    <div class="hero-3d">
-                                        <h1>Jose Machava</h1>
-                                        <p>Desenvolvedor Web & Especialista em Soluções Digitais</p>
-                                        <button class="cta-btn" onclick="document.querySelector('.projects-section').scrollIntoView({behavior: 'smooth'})">Ver Projetos</button>
-                                    </div>
-                                    <section class="projects-section">
-                                        <h2>Meus Projectos</h2>
-                                        <div class="projects-grid">
-                                            <div class="project-card">
-                                                <img src="images/acfinance.png" alt="ACFinance Dashboard">
-                                                <h3>Microcrédito (ACFinance)</h3>
-                                                <p>Sistema de gestão de microcrédito online, com dashboard moderno e relatórios financeiros.</p>
-                                                <a href="https://acfinance.online/" target="_blank">Ver Projeto</a>
-                                            </div>
-                                            <div class="project-card">
-                                                <img src="images/intellica.png" alt="Intellica Dashboard">
-                                                <h3>ERP LRP Tecnologia</h3>
-                                                <p>ERP completo para gestão empresarial, com dashboards interativos e controle de processos.</p>
-                                                <a href="https://sistema.lrptecnologia.com.br/" target="_blank">Ver Projeto</a>
-                                            </div>
-                                            <div class="project-card">
-                                                <img src="images/up.png" alt="Gestão de Água">
-                                                <h3>Gestão de Água</h3>
-                                                <p>Sistema para gestão de consumo e faturação de água, com painel administrativo intuitivo.</p>
-                                                <a href="https://agua-gestao.actecn.com/" target="_blank">Ver Projeto</a>
-                                            </div>
-                                            <div class="project-card">
-                                                <img src="images/up12.png" alt="BarCandy Dashboard">
-                                                <h3>Gestão de BarCandy</h3>
-                                                <p>Plataforma para gestão de bares e inventário, com dashboard de vendas e estoque.</p>
-                                                <a href="https://barcandy.actecn.com/" target="_blank">Ver Projeto</a>
-                                            </div>
-                                            <div class="project-card">
-                                                <img src="images/GIZ-logo-modified.png" alt="MozMEC">
-                                                <h3>MozMEC</h3>
-                                                <p>Website institucional para o Ministério da Educação, com design responsivo e moderno.</p>
-                                                <a href="https://mozmec.co.mz/" target="_blank">Ver Projeto</a>
-                                            </div>
-                                            <div class="project-card">
-                                                <img src="images/acfinance.png" alt="Gestão de Seguros">
-                                                <h3>Gestão de Seguros</h3>
-                                                <p>Sistema para gestão de apólices e clientes, com dashboard de acompanhamento.</p>
-                                                <a href="http://renato.actecn.com/" target="_blank">Ver Projeto</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
-                                    <script>
-                                    // Dropdown menu interatividade
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        const dropdown = document.querySelector('.u-nav-dropdown');
-                                        const submenu = dropdown.querySelector('.u-nav-2');
-                                        dropdown.addEventListener('mouseenter', () => submenu.style.display = 'block');
-                                        dropdown.addEventListener('mouseleave', () => submenu.style.display = 'none');
-                                    });
-                                    // Three.js 3D Animation
-                                    window.addEventListener('DOMContentLoaded', () => {
-                                        const scene = new THREE.Scene();
-                                        scene.background = null;
-                                        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.6), 0.1, 1000);
-                                        camera.position.z = 5;
-                                        const renderer = new THREE.WebGLRenderer({ alpha: true, canvas: document.getElementById('three-canvas') });
-                                        renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
-                                        // 3D Object: Rotating Torus Knot
-                                        const geometry = new THREE.TorusKnotGeometry(1, 0.4, 120, 16);
-                                        const material = new THREE.MeshStandardMaterial({ color: 0xff9800, metalness: 0.7, roughness: 0.2 });
-                                        const torusKnot = new THREE.Mesh(geometry, material);
-                                        scene.add(torusKnot);
-                                        // Lighting
-                                        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-                                        scene.add(ambientLight);
-                                        const pointLight = new THREE.PointLight(0xff9800, 1, 100);
-                                        pointLight.position.set(5, 5, 5);
-                                        scene.add(pointLight);
-                                        // Animation loop
-                                        function animate() {
-                                            requestAnimationFrame(animate);
-                                            torusKnot.rotation.x += 0.01;
-                                            torusKnot.rotation.y += 0.015;
-                                            renderer.render(scene, camera);
-                                        }
-                                        animate();
-                                        // Responsive resize
-                                        window.addEventListener('resize', () => {
-                                            camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
-                                            camera.updateProjectionMatrix();
-                                            renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
-                                        });
-                                    });
-                                    </script>
-                <h3>Gestão de Água</h3>
-                <p>Sistema para gestão de consumo e faturação de água, com painel administrativo intuitivo.</p>
-                <a href="https://agua-gestao.actecn.com/" target="_blank">Ver Projeto</a>
-            </div>
-            <div class="project-card">
-                <img src="images/up12.png" alt="BarCandy Dashboard">
-                <h3>Gestão de BarCandy</h3>
-                <p>Plataforma para gestão de bares e inventário, com dashboard de vendas e estoque.</p>
-                <a href="https://barcandy.actecn.com/" target="_blank">Ver Projeto</a>
-            </div>
-            <div class="project-card">
-                <img src="images/GIZ-logo-modified.png" alt="MozMEC">
-                <h3>MozMEC</h3>
-                <p>Website institucional para o Ministério da Educação, com design responsivo e moderno.</p>
-                <a href="https://mozmec.co.mz/" target="_blank">Ver Projeto</a>
-            </div>
-            <div class="project-card">
-                <img src="images/acfinance.png" alt="Gestão de Seguros">
-                <h3>Gestão de Seguros</h3>
-                <p>Sistema para gestão de apólices e clientes, com dashboard de acompanhamento.</p>
-                <a href="http://renato.actecn.com/" target="_blank">Ver Projeto</a>
-            </div>
-            <!-- Adicione mais cards conforme necessário -->
-        </div>
-    </section>
+<html style="font-size: 16px;"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Desenvolvimento de aplicativos, softwares, websites e jogos mobile">
+    <meta name="description" content="Desenvolvimento de aplicativos, softwares, websites e jogos mobile">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Jose Machava - Inicio </title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+<link rel="stylesheet" href="Home.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.7.1, nicepage.com">
+    <meta property="og:title" content="José Machava-Desenvolvimento de aplicativos, softwares, websites e jogos mobile">
+    <meta property="og:description" content="Desenvolvimento de aplicativos, softwares, websites e jogos mobile">
+    <meta property="og:image" content="images/joseph-Photoroom.png">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
     
-</body>
-</html>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/YOURLOGO.png"
+}</script>
+    <meta name="theme-color" content="#232b79">
+    <meta property="og:type" content="website">
+  </head>
+  <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode"><header class="u-clearfix u-header u-header" id="sec-a184"><div class="u-clearfix u-sheet u-sheet-1">
+        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; text-transform: uppercase; font-weight: 500;">
+            <a class="u-button-style u-custom-active-border-color u-custom-active-color u-custom-border u-custom-border-color u-custom-borders u-custom-hover-border-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+              <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
+              <li class="u-nav-item">
+                <a class="u-active-palette-1-base u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="Home.html" style="padding: 10px 20px;">Home</a>
+              </li>
+              <li class="u-nav-item">
+                <a class="u-active-palette-1-base u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="Home.html#carousel_ca96" data-page-id="734010139" style="padding: 10px 20px;">Sobre</a>
+              </li>
+              <li class="u-nav-item">
+                <a class="u-active-palette-1-base u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-palette-1-light-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white" href="Home.html#carousel_f817" data-page-id="734010139" style="padding: 10px 20px;">Contacto</a>
+              </li>
+              <li class="u-nav-item">
+                <a class="u-nav-link u-button-style" href="projetos.html" style="padding: 10px 24px; background: #007bff; color: #fff; border-radius: 6px; font-weight: bold; margin-left: 10px;">Projetos</a>
+              </li>
+              <li class="u-nav-item u-nav-dropdown">
+  <a class="u-nav-link u-button-style u-text-grey-90 u-text-hover-white u-text-active-white u-hover-palette-1-light-1"
+     href="#" style="padding: 10px 20px; font-weight: bold;">
+    🚀 Projectos ▾
+  </a>
+  <div class="u-nav-popup" style="background-color: #f9f9f9; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <ul class="u-nav u-unstyled u-nav-2" style="padding: 10px 15px;">
+
+      <!-- Websites Institucionais -->
+      <li class="u-nav-item" style="margin-bottom: 6px;">
+        <a class="u-nav-link" href="https://mozmec.co.mz/" target="_blank">🌐 MozMEC</a>
+      </li>
+      <li class="u-nav-item" style="margin-bottom: 6px;">
+        <a class="u-nav-link" href="https://lifenutricsmozambique.co.mz/" target="_blank">🌐 Life Nutrics Mozambique</a>
+      </li>
+      <li class="u-nav-item" style="margin-bottom: 6px;">
+        <a class="u-nav-link" href="https://asea.co.mz/asea/" target="_blank">🌐 ASEA Moçambique</a>
+      </li>
+      <li class="u-nav-item" style="margin-bottom: 6px;">
+        <a class="u-nav-link" href="https://nata.midia.co.mz/" target="_blank">🌐 Nata Midia</a>
+      </li>
+        <li class="u-nav-item" style="margin-bottom: 6px;">
+          <a class="u-nav-link" href="projetos.html">🗂 Projetos</a>
+        </li>
+
+      <!-- E-commerces -->
+      <li class="u-nav-item" style="margin-top: 10px; font-weight: bold;">🛍️ E-commerces</li>
+      <li class="u-nav-item" style="margin-bottom: 6px;">
+        <a class="u-nav-link" href="https://bellahealthy.co.mz/" target="_blank">🛒 Bella Healthy</a>
+      </li>
+      <li class="u-nav-item" style="margin-bottom: 6px;">
+        <a class="u-nav-link" href="https://lojatecnoland.com/" target="_blank">🛒 Loja TecnoLand</a>
+      </li>
+
+      <!-- Sistemas de Gestão -->
+      <li class="u-nav-item" style="margin-top: 10px; font-weight: bold;">🧩 Sistemas de Gestão</li>
+      <li class="u-nav-item" style="margin-bottom: 6px;">
+        <a class="u-nav-link" href="https://acfinance.online/" target="_blank">💼 Microcrédito (ACFinance)</a>
+      </li>
+      <li class="u-nav-item" style="margin-bottom: 6px;">
+        <a class="u-nav-link" href="https://agua-gestao.actecn.com/" target="_blank">🚰 Gestão de Água</a>
+      </li>
+      <li class="u-nav-item" style="margin-bottom: 6px;">
+        <a class="u-nav-link" href="https://barcandy.actecn.com/" target="_blank">🍹 Gestão de BarCandy</a>
+      </li>
+      <li class="u-nav-item" style="margin-bottom: 6px;">
+        <a class="u-nav-link" href="http://renato.actecn.com/" target="_blank">🛡️ Gestão de Seguros</a>
+      </li>
+      <li class="u-nav-item">
+        <a class="u-nav-link" href="https://sistema.lrptecnologia.com.br/" target="_blank">🧾 ERP LRP Tecnologia</a>
+      </li>
+
+    </ul>
+  </div>
+</li>
+</li></ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html#carousel_ca96" data-page-id="734010139">Sobre</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html#carousel_f817" data-page-id="734010139">Contacto</a>
+</li></ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+        <a href="Home.html" data-page-id="734010139" class="u-image u-logo u-image-1" data-image-width="308" data-image-height="53">
+          <img src="images/YOURLOGO.png" class="u-logo-image u-logo-image-1">
+        </a>
+      </div></header> 
+    <!-- <section class="skrollable u-align-center u-clearfix u-image u-parallax u-shading u-section-1" id="carousel_5ad0" src="" data-image-width="1782" data-image-height="1080">
+      <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+        <h1 class="u-custom-font u-font-montserrat u-text u-text-body-alt-color u-title u-text-1" data-animation-out="1"> José <span style="font-weight: 700;">Machava</span>
+        </h1>
+        <p class="u-large-text u-text u-text-body-alt-color u-text-font u-text-variant u-text-2">
+          <br>  Desenvolvedor Fullstack  | | Help Desk 
+        </p>
+        <h1 class="u-custom-font u-font-roboto u-text u-title u-text-3" data-animation-name="bounceIn" data-animation-duration="750" data-animation-direction="Down">Seja Bem vindo&nbsp;&nbsp;<br>
+        </h1>
+      </div>
+    </section> -->
+    <section class="u-clearfix u-grey-5 u-section-2" id="carousel_ebf8">
+      <div class="u-clearfix u-sheet u-sheet-1"></div>
+    </section>
+    <section class="u-clearfix u-lightbox u-section-3" id="carousel_ca96">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-size-30 u-size-60-md">
+                <div class="u-layout-col">
+                  <div class="u-size-40">
+                    <div class="u-layout-row">
+                      <div class="u-container-style u-layout-cell u-right-cell u-size-60 u-layout-cell-1">
+                        <div class="u-container-layout u-valign-middle u-container-layout-1">
+                          <h3 class="u-text u-text-default u-text-palette-1-base u-text-1">José Junito Alberto Machava</h3>
+                          <p class="u-align-left u-text u-text-default u-text-2">Sou um profissional,&nbsp; apaixonado pela tecnologia e suas aplicações para melhorar a vida das pessoas e das empresas. Com uma licenciatura em Informática, tenho conhecimentos sólidos em linguagens de programação, arquitetura de sistemas, bancos de dados, desenvolvimento web e mobile, entre outras áreas relevantes, Minha ética de trabalho é baseada em comprometimento, responsabilidade e respeito aos prazos e expectativas dos meus clientes. Estou sempre em busca de atualizações e aprimoramentos para garantir a qualidade do meu trabalho e a satisfação dos meus clientes.
+                          </p>
+                          <p class="u-text u-text-3">Sou apaixonado por ensinar&nbsp; e aprender.&nbsp;</p>
+                          <a href="mailto:jjamachava1997@gmail.com" class="u-btn u-btn-round u-button-style u-radius-9 u-btn-1">Entrar em contacto</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-size-20">
+                    <div class="u-layout-row">
+                      <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                        <div class="u-container-layout u-container-layout-2">
+                          <h5 class="u-text u-text-default u-text-4">Habilidades</h5>
+                          <ul class="u-custom-list u-text u-text-default u-text-5">
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div> Treinamento em TICs&nbsp;
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Criação de Aplicações Mobile
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Engenharia de software&nbsp;
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div> Liderança e cooperação 
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Designer ​gráfico 
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Criação de Websites
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Gestor de projectos
+                            </li>
+                             <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Montagem e Manutenção de Câmaras
+                            </li>
+                             <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Montagem e Gestão de Redes
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="cell-temp-clone u-container-style u-layout-cell u-size-30 u-layout-cell-3">
+                        <div class="u-container-layout u-valign-top u-container-layout-3">
+                          <h5 class="u-text u-text-default u-text-6">Softwares</h5>
+                          <ul class="u-custom-list u-text u-text-7">
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div> Adobe Photoshop
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>&nbsp;Trello&nbsp;
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Pacote Office&nbsp;
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>WordPress
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Joomla
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Github
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="cell-temp-clone u-container-style u-layout-cell u-size-30 u-layout-cell-3">
+                        <div class="u-container-layout u-valign-top u-container-layout-3">
+                          <h5 class="u-text u-text-default u-text-6">Linguagens & Framework</h5>
+                          <ul class="u-custom-list u-text u-text-7">
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div> PHP
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>&nbsp;Javascript&nbsp;
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Vuejs&nbsp;
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Nodejs
+                            </li>
+                            <li style="">
+                              <div class="u-list-icon u-text-palette-1-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-ac83"><path d="m433.1 67.1-231.8 231.9c-6.2 6.2-16.4 6.2-22.6 0l-99.8-99.8-78.9 78.8 150.5 150.5c10.5 10.5 24.6 16.3 39.4 16.3 14.8 0 29-5.9 39.4-16.3l282.7-282.5z" fill="currentColor"></path></svg>
+                              </div>Flutter
+                            </li>
+                            
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-size-30 u-size-60-md">
+                <div class="u-layout-col">
+                  <div class="u-container-style u-layout-cell u-left-cell u-size-60 u-layout-cell-4">
+                    <div class="u-container-layout u-container-layout-4">
+                      <img class="u-image u-image-round u-radius-13 u-image-1" data-image-width="862" data-image-height="862" src="images/joseph-Photoroom.png">
+                      <div class="u-align-left u-black u-container-style u-group u-opacity u-opacity-60 u-radius-18 u-shape-round u-group-1">
+                        <div class="u-container-layout u-container-layout-5">
+                          <h3 class="u-text u-text-8">
+                            <span style="font-weight: 400;">Jose </span>Machava
+                          </h3>
+                          <p class="u-text u-text-9">Desenvolvedor Fullstack  | | Help Desk </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-grey-5 u-section-4" id="carousel_4003">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h4 class="u-align-center u-text u-text-1"> EXPERIÊNCIA PROFISSIONAL</h4>
+      </div>
+    </section>
+    <section class="u-align-center u-clearfix u-section-5" id="sec-cd5f">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h2 class="u-text u-text-1"></h2>
+        <p class="u-text u-text-2"> Confira meu repertorio e caminhada profissional</p>
+        <div class="u-expanded-width u-list u-list-1">
+          <div class="u-repeater u-repeater-1">
+            
+            <div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-list-item-2">
+              <div class="u-container-layout u-similar-container u-container-layout-2"><span class="u-icon-circle" style="border: none; background: none;"><img src="images/up1.png"  alt="" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></span>
+                
+                <p class="u-align-center u-small-text u-text u-text-variant u-text-7"> [Agosto-Novembro 2019] </p>
+                <ul class="u-align-left u-custom-list u-text u-text-8">
+                  <li>
+                    Manutenção de redes;
+                  </li>
+                  <li>
+                     Manutenção de sala de informática da Universidade;
+                  </li>
+                  <li>
+                    Manutenção de Websites da Universidade;
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-video-cover u-list-item-1">
+              <div class="u-container-layout u-similar-container u-container-layout-1"><span class="u-icon-circle" style="border: none; background: none;"><img src="images/29133073_158437594865391_8175874717891166208_n-modified.png" alt="" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"></span>
+                <h5 class="u-text u-text-default u-text-3"> Formador de programação no Instituto Medio Politecnico Indico-Chogoene </h5>
+                <p class="u-align-center u-small-text u-text u-text-variant u-text-4"> [Julho 2022 - Outubro 2022]</p>
+                <ul class="u-align-left u-custom-list u-text u-text-5">
+                 
+                  <li>Ministrar e preparar o material didático das aulas de programação
+conforme orientação e conteúdo previamente distribuído;
+                  </li>
+                  <li>
+                    Avaliação de desempenho dos estudantes;
+                  </li>
+                  <li>
+                   Desenvolver trabalhos em aula e esclarecer dúvidas.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-video-cover u-list-item-3">
+              <div class="u-container-layout u-similar-container u-container-layout-3"><span class="u-icon-circle" style="border: none; background: none;"><img src="images/GIZ-logo-modified.png" alt="" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+</span>
+                <h5 class="u-text u-text-default u-text-9"> Programador Assitente da ACTECHINNOVATION</h5>
+                <p class="u-align-center u-small-text u-text u-text-variant u-text-10"> [Abril de 2021 – Dezembro de 2022] </p>
+                <ul class="u-align-left u-custom-list u-text u-text-11">
+                 
+                  <li>
+                    Criação de websites;
+                  </li>
+                  <li>
+                    Analista sistemas da empresa; 
+                  </li>
+                  <li>
+                    Criação de um sistema de Indicações para uma empresa de portugal;<br>
+                  </li>
+                  <li>
+                   Criação de sistema de venda para uma ferragem;<br>
+                  </li>
+                </ul>
+              </div>
+            </div>
+           <div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-video-cover u-list-item-4">
+  <div class="u-container-layout u-similar-container u-container-layout-4">
+    <span class="u-icon-circle" style="border: none; background: none;">
+      <img src="images/241052105_6400842213274279_6117849314540528945_n-modified.png" alt="" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+
+    </span>
+    <h5 class="u-text u-text-default u-text-12">Formador de Programação – Instituto Médio Politécnico de Educação e Tecnologia</h5>
+    <p class="u-align-center u-small-text u-text u-text-variant u-text-13">[Outubro de 2022 – Fevereiro de 2023]</p>
+    <ul class="u-align-left u-custom-list u-text u-text-14">
+      <li>Preparação e ministração de aulas conforme o conteúdo programático.</li>
+      <li>Avaliação do desempenho dos estudantes.</li>
+      <li>Esclarecimento de dúvidas e apoio em trabalhos práticos.</li>
+      <li>Suporte na criação de projetos finais dos estudantes.</li>
+    </ul>
+  </div>
+</div>
+
+  <div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-video-cover u-list-item-5">
+  <div class="u-container-layout u-similar-container u-container-layout-5">
+    <span class="u-icon-circle" style="border: none; background: none;">
+      <img src="images/up.png" alt="" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+</span>
+    <h5 class="u-text u-text-default u-text-15">Gestor de TI da 9Lahard/Software</h5>
+    <p class="u-align-center u-small-text u-text u-text-variant u-text-16">[Fevereiro 2022 - 2023]</p>
+    <ul class="u-align-left u-custom-list u-text u-text-17">
+      <li>
+        
+        Lecionamento de cursos de curta duração;
+      </li>
+      <li>
+        
+        Planeamento e atribuição de tarefas com Trello;
+      </li>
+      <li>
+        
+        Edição e tratamento de conteúdos digitais;
+      </li>
+      <li>
+       
+        Avaliação de desempenho dos colaboradores;
+      </li>
+      <li>
+       
+        Consultoria em TI.
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-video-cover u-list-item-6">
+  <div class="u-container-layout u-similar-container u-container-layout-6">
+    <span class="u-icon-circle" style="border: none; background: none;">
+      <img src="images/intellica.png" alt="" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+</span>
+
+    <h5 class="u-text u-text-default u-text-18">INTELLICA – Maputo</h5>
+    <p class="u-align-center u-small-text u-text u-text-variant u-text-19">[2023 – 2024]</p>
+    <ul class="u-align-left u-custom-list u-text u-text-20">
+      <li>Help Desk e Suporte ao Cliente.</li>
+      <li>Instalação e manutenção de sistemas e redes.</li>
+      <li>Configuração de câmeras IP e controladores de acesso.</li>
+      <li>Atendimento técnico de 1ª e 2ª linha.</li>
+    </ul>
+  </div>
+</div>
+<div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-video-cover u-list-item-6">
+  <div class="u-container-layout u-similar-container u-container-layout-6">
+    <span class="u-icon-circle" style="border: none; background: none;">
+      <img src="images/1630623524209.jpeg" alt="" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+</span>
+    <h5 class="u-text u-text-default u-text-18">Iktechsolution – Portugal</h5>
+    <p class="u-align-center u-small-text u-text u-text-variant u-text-19">[2023 – Remoto]</p>
+    <ul class="u-align-left u-custom-list u-text u-text-20">
+      <li>Desenvolvedor Full Stack para sistema de gestão de restaurantes.</li>
+      <li>Levantamento de requisitos, testes e entrega do sistema.</li>
+      <li>Projeto em produção num restaurante em Londres.</li>
+    </ul>
+  </div>
+</div>
+<div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-video-cover u-list-item-6">
+  <div class="u-container-layout u-similar-container u-container-layout-6">
+    <span class="u-icon-circle" style="border: none; background: none;">
+      <img src="images/acfinance.png" alt="AC Finance" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+    </span>
+    <h5 class="u-text u-text-default u-text-18">AC Finance e Microcrédito – Maputo</h5>
+    <p class="u-align-center u-small-text u-text u-text-variant u-text-19">[2025 – Presencial]</p>
+    <ul class="u-align-left u-custom-list u-text u-text-20">
+      <li>Suporte técnico e desenvolvimento de sistemas internos.</li>
+      <li>Manutenção de bases de dados e geração de relatórios.</li>
+      <li>Integração com equipas de contabilidade e crédito.</li>
+      <li>Laravel, MySQL, Power BI, GitHub.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-video-cover u-list-item-6">
+  <div class="u-container-layout u-similar-container u-container-layout-6">
+    <span class="u-icon-circle" style="border: none; background: none;">
+      <img src="images/cropped-cropped-LOGO-1.png" alt="Tecnoland" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+    </span>
+    <h5 class="u-text u-text-default u-text-18">Tecnoland – Maputo</h5>
+    <p class="u-align-center u-small-text u-text u-text-variant u-text-19">[2025 – Remoto]</p>
+    <ul class="u-align-left u-custom-list u-text u-text-20">
+      <li>Desenvolvimento de sites institucionais e e-commerce.</li>
+      <li>Integração com pagamentos e gestão de stock.</li>
+      <li>Gestão de conteúdos e redes sociais da empresa.</li>
+      <li>WordPress, Laravel, JavaScript, WooCommerce.</li>
+    </ul>
+  </div>
+</div>
+</div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-grey-5 u-section-6" id="carousel_741f">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h4 class="u-align-center u-text u-text-1"> PRÉMIOS</h4>
+      </div>
+    </section>
+    <section class="u-align-center u-clearfix u-section-7" id="carousel_9681">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-text u-text-1"> Conquistas, homenagens, prêmios relevantes que ganhei por exceder os padrões médios acadêmicos</p>
+        <div class="u-expanded-width u-list u-list-1">
+          <div class="u-repeater u-repeater-1">
+            <div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-video-cover u-list-item-1">
+              <div class="u-container-layout u-similar-container u-container-layout-1"><span class="u-border-2 u-border-grey-60 u-file-icon u-icon u-icon-circle u-icon-1"><img src="images/6103332.png" alt=""></span>
+                <h5 class="u-text u-text-default u-text-2">Feira
+de ciencia provincial</h5>
+                <p class="u-large-text u-text u-text-variant u-text-3">
+                  <span style="font-weight: 700;"> [2012] – Segundo classificado </span>na feira
+de ciencia provincial 2012 realizada no
+dia 18 de Agosto de 2012 na provincia
+de Gaza.
+                </p>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-list-item-2">
+              <div class="u-container-layout u-similar-container u-container-layout-2"><span class="u-border-2 u-border-grey-60 u-file-icon u-icon u-icon-circle u-icon-2"><img src="images/6103332.png" alt=""></span>
+                <h5 class="u-text u-text-default u-text-4"> Universidade Pedagogica</h5>
+                <p class="u-large-text u-text u-text-variant u-text-5">
+                  <span style="font-weight: 700;"> [2018] – Terceiro classificado</span> nas
+jornadas cinetificas realizadas de 10 a
+14 de setembro de 2018 na
+Universidade Pedagogica-Beira.
+                </p>
+              </div>
+            </div>
+            <div class="u-align-center u-container-style u-grey-5 u-list-item u-repeater-item u-video-cover u-list-item-3">
+              <div class="u-container-layout u-similar-container u-container-layout-3"><span class="u-border-2 u-border-grey-60 u-file-icon u-icon u-icon-circle u-icon-3"><img src="images/610333.png" alt=""></span>
+                <h5 class="u-text u-text-default u-text-6"> Universidade Pedagogica</h5>
+                <p class="u-large-text u-text u-text-variant u-text-7">
+                  <span style="font-weight: 700;">&nbsp;[2019] – Primeiro classificado</span> nas
+jornadas cinetificas realizadas no ano
+de 2019 na Universidade Pedagogica-Beira.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-grey-5 u-section-8" id="carousel_cc0c">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h4 class="u-align-center u-text u-text-1"> EDUCAÇÃO</h4>
+      </div>
+    </section>
+    <section class="u-align-center u-clearfix u-section-9" id="sec-5c68">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-tab-links-align-left u-tabs u-tabs-1">
+          <ul class="u-border-2 u-border-palette-1-base u-spacing-10 u-tab-list u-unstyled" role="tablist">
+            <li class="u-tab-item" role="presentation">
+              <a class="active u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-1" id="link-tab-0da5" href="#tab-0da5" role="tab" aria-controls="tab-0da5" aria-selected="true"> 2021</a>
+            </li>
+            <li class="u-tab-item" role="presentation">
+              <a class="u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-2" id="link-tab-14b7" href="#tab-14b7" role="tab" aria-controls="tab-14b7" aria-selected="false"> 2016</a>
+            </li>
+            <li class="u-tab-item" role="presentation">
+              <a class="u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-3" id="link-tab-5c39" href="#tab-5c39" role="tab" aria-controls="tab-5c39" aria-selected="false">2014</a>
+            </li>
+           
+          </ul>
+          <div class="u-tab-content">
+            <div class="u-align-left u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="tab-0da5" role="tabpanel" aria-labelledby="link-tab-0da5">
+              <div class="u-container-layout u-valign-top u-container-layout-1">
+                <h4 class="u-text u-text-default u-text-1"> ensino Superior</h4>
+                <p class="u-text u-text-default u-text-2"> Concluí o ensino Superior na faculdade de Ciência e
+tecnologia da Universidade Licungo no curso e Licenciatura Em
+informática, com nota final de 13 valores.</p>
+                <a href="files/certificadoJoseMachava.pdf" class="u-btn u-button-style u-file-link u-hover-palette-1-dark-1 u-palette-1-base u-btn-1" target="_blank"><span class="u-file-icon u-icon u-text-white u-icon-1"><img src="images/5.png" alt=""></span>&nbsp;Ver e Baixar O certificado
+                </a>
+              </div>
+            </div>
+            <div class="u-align-left u-container-style u-tab-pane u-white u-tab-pane-2" id="tab-14b7" role="tabpanel" aria-labelledby="link-tab-14b7">
+              <div class="u-container-layout u-valign-top u-container-layout-2">
+                <h4 class="u-text u-text-default u-text-3"> nível médio</h4>
+                <p class="u-text u-text-4"> Concluí a 12ª Classe (nível médio) na Escola Pré-universitária
+Hamdan Bin Rashid.</p>
+              </div>
+            </div>
+            <div class="u-align-left u-container-style u-tab-pane u-white u-tab-pane-3" id="tab-5c39" role="tabpanel" aria-labelledby="link-tab-5c39">
+              <div class="u-container-layout u-valign-top u-container-layout-3">
+                <h4 class="u-text u-text-default u-text-5">Ensino Secundário</h4>
+                <p class="u-text u-text-default u-text-6"> Concluí a 10ª Classe na Escola Secundaria
+de Chimundo.</p>
+              </div>
+            </div>
+            <div class="u-align-left u-container-style u-tab-pane u-white u-tab-pane-4" id="tab-b37a" role="tabpanel" aria-labelledby="link-tab-b37a">
+              
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-grey-5 u-section-10" id="carousel_f7cc">
+      <div class="u-align-left u-clearfix u-sheet u-sheet-1"></div>
+    </section>
+    <section class="u-clearfix u-grey-5 u-section-11" id="carousel_e58d">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h4 class="u-align-center u-text u-text-1">Fale comigo</h4>
+      </div>
+    </section>
+   <section class="u-clearfix u-section-12" id="carousel_f817">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout">
+        <div class="u-layout-row">
+          <!-- FORMULÁRIO DE CONTACTO -->
+          <div class="u-align-left u-container-style u-layout-cell u-palette-1-base u-size-38 u-layout-cell-1">
+            <div class="u-container-layout u-valign-middle u-container-layout-1">
+              <h3 class="u-custom-font u-font-montserrat u-text u-text-default u-text-1">Entrar em Contacto</h3>
+              <p class="u-text u-text-2">Responderei o mais breve possível, em dias úteis.</p>
+              <div class="u-expanded-width u-form u-form-1">
+                <form action="#" method="POST" class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form" name="form" style="padding: 0px;">
+                  <div class="u-form-group u-form-name u-label-none u-form-group-1">
+                    <input type="text" placeholder="Digite seu nome" id="name-ea18" name="name" class="u-input u-input-rectangle u-palette-1-light-1" required>
+                  </div>
+                  <div class="u-form-email u-form-group u-label-none u-form-group-2">
+                    <input type="email" placeholder="Digite um email válido" id="email-ea18" name="email" class="u-input u-input-rectangle u-palette-1-light-1" required>
+                  </div>
+                  <div class="u-form-group u-form-message u-label-none">
+                    <textarea placeholder="Digite sua mensagem" rows="4" name="message" class="u-input u-input-rectangle u-palette-1-light-1" required></textarea>
+                  </div>
+                  <div class="u-align-left u-form-group u-form-submit u-label-none u-form-group-3">
+                    <button type="submit" class="u-border-none u-btn u-btn-submit u-button-style u-white u-btn-1">Enviar mensagem</button>
+                  </div>
+                  <div class="u-form-send-message u-form-send-success">Muito obrigado! Sua mensagem foi enviada com sucesso.</div>
+                  <div class="u-form-send-error u-form-send-message">Erro! A mensagem não foi enviada. Tente novamente.</div>
+                  <input type="hidden" value="" name="recaptchaResponse">
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- REDES SOCIAIS -->
+          <div class="u-align-center u-container-style u-layout-cell u-shape-rectangle u-size-22 u-layout-cell-2">
+            <div class="u-container-layout u-container-layout-2">
+              <h3 class="u-custom-font u-font-montserrat u-text u-text-3">
+                <span style="font-size: 1.125rem;">[Se o formulário não funcionar]</span><br>Outras formas de contacto:
+              </h3>
+              <p class="u-text u-text-grey-40 u-text-4">
+                Siga-me nas redes sociais abaixo para novidades sobre programação, tecnologia e muito mais.
+              </p>
+              <div class="u-social-icons u-spacing-10 u-social-icons-1">
+  <!-- Facebook -->
+  <a href="https://facebook.com/josephmashaba.mashaba" target="_blank" title="Facebook">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 32px;">
+  </a>
+  
+  <!-- Instagram -->
+  <a href="https://instagram.com/machava12" target="_blank" title="Instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" style="width: 32px;">
+  </a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/258840572267" target="_blank" title="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 32px;">
+  </a>
+</div>
+
+                  </span>
+                
+              </div>
+            </div>
+          </div>
+          <!-- FIM -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-b796"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Jose Machava © Todos ​os direitos reservados</p>
+      </div></footer>
+  
