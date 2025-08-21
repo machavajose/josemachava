@@ -2,8 +2,103 @@
 <html style="font-size: 16px;">
 <head>
     <!-- ... (cabeçalho mantido igual) ... -->
+    <style>
+        #three-canvas {
+            width: 100vw;
+            height: 60vh;
+            display: block;
+            background: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .hero-3d {
+            position: absolute;
+            top: 10vh;
+            left: 0;
+            width: 100vw;
+            text-align: center;
+            z-index: 2;
+            color: #fff;
+        }
+        .hero-3d h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px #000a;
+        }
+        .hero-3d p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .cta-btn {
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px #0005;
+            transition: background 0.3s;
+        }
+        .cta-btn:hover {
+            background: #e65100;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        // Three.js 3D Animation
+        const scene = new THREE.Scene();
+        scene.background = null;
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.6), 0.1, 1000);
+        camera.position.z = 5;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+        const canvas = renderer.domElement;
+        canvas.id = 'three-canvas';
+        document.body.prepend(canvas);
+
+        // 3D Object: Rotating Torus Knot
+        const geometry = new THREE.TorusKnotGeometry(1, 0.4, 120, 16);
+        const material = new THREE.MeshStandardMaterial({ color: 0xff9800, metalness: 0.7, roughness: 0.2 });
+        const torusKnot = new THREE.Mesh(geometry, material);
+        scene.add(torusKnot);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+        scene.add(ambientLight);
+        const pointLight = new THREE.PointLight(0xff9800, 1, 100);
+        pointLight.position.set(5, 5, 5);
+        scene.add(pointLight);
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            torusKnot.rotation.x += 0.01;
+            torusKnot.rotation.y += 0.015;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+        });
+    });
+    </script>
 </head>
 <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
+    <div class="hero-3d">
+        <h1>Jose Machava</h1>
+        <p>Desenvolvedor Web & Especialista em Soluções Digitais</p>
+        <button class="cta-btn" onclick="window.location.href='blog/blog.html'">Ver Projetos</button>
+    </div>
     <header class="u-clearfix u-header u-header" id="sec-a184">
         <div class="u-clearfix u-sheet u-sheet-1">
             <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
