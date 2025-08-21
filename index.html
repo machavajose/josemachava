@@ -3,6 +3,59 @@
 <head>
     <!-- ... (cabeçalho mantido igual) ... -->
     <style>
+        .hero-3d h1 {
+            font-size: 3.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #ff9800;
+            text-shadow: 0 2px 20px #000a;
+        }
+        .hero-3d .subtitle {
+            font-size: 1.7rem;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 2px 10px #0007;
+        }
+        .hero-3d .about {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            font-size: 2rem;
+            color: #ff9800;
+            margin-bottom: 2rem;
+        }
+        .section-title i {
+            font-size: 2.2rem;
+        }
+        .experience-list li {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+        }
+        .experience-list li i {
+            color: #ff9800;
+            font-size: 1.3rem;
+            margin-top: 2px;
+        }
+        .project-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .project-card h3 i {
+            color: #ff9800;
+            font-size: 1.2rem;
+        }
         #three-canvas {
             width: 100vw;
             height: 60vh;
@@ -617,57 +670,58 @@
         <canvas id="three-canvas"></canvas>
     </div>
     <div class="hero-3d">
-        <h1>Jose Machava</h1>
-        <p>Desenvolvedor Web & Especialista em Soluções Digitais</p>
-        <button class="cta-btn" onclick="document.querySelector('.experience-section').scrollIntoView({behavior: 'smooth'})">Ver Experiência</button>
+    <h1>Jose Machava</h1>
+    <div class="subtitle">Desenvolvedor Web & Especialista em Soluções Digitais</div>
+    <div class="about">Apaixonado por tecnologia, atuo há mais de 7 anos desenvolvendo sistemas web, dashboards e soluções digitais para empresas e instituições. Meu foco é entregar resultados com inovação, segurança e design moderno.</div>
+    <button class="cta-btn" onclick="document.querySelector('.experience-section').scrollIntoView({behavior: 'smooth'})">Ver Experiência</button>
     </div>
     <section class="experience-section">
-        <h2>Experiência Profissional</h2>
+        <div class="section-title"><i>💼</i> Experiência Profissional</div>
         <ul class="experience-list">
-            <li><strong>Microcrédito (ACFinance):</strong> Desenvolvimento de sistema de gestão de microcrédito online, dashboards financeiros e relatórios.</li>
-            <li><strong>ERP LRP Tecnologia:</strong> Criação de ERP completo para gestão empresarial, dashboards interativos e controle de processos.</li>
-            <li><strong>Gestão de Água:</strong> Sistema para gestão de consumo e faturação de água, painel administrativo intuitivo.</li>
-            <li><strong>Gestão de BarCandy:</strong> Plataforma para gestão de bares e inventário, dashboard de vendas e estoque.</li>
-            <li><strong>MozMEC:</strong> Website institucional para o Ministério da Educação, design responsivo e moderno.</li>
-            <li><strong>Gestão de Seguros:</strong> Sistema para gestão de apólices e clientes, dashboard de acompanhamento.</li>
+            <li><i>🧩</i><strong>Microcrédito (ACFinance):</strong> Desenvolvimento de sistema de gestão de microcrédito online, dashboards financeiros e relatórios.</li>
+            <li><i>🧩</i><strong>ERP LRP Tecnologia:</strong> Criação de ERP completo para gestão empresarial, dashboards interativos e controle de processos.</li>
+            <li><i>🧩</i><strong>Gestão de Água:</strong> Sistema para gestão de consumo e faturação de água, painel administrativo intuitivo.</li>
+            <li><i>🧩</i><strong>Gestão de BarCandy:</strong> Plataforma para gestão de bares e inventário, dashboard de vendas e estoque.</li>
+            <li><i>🌐</i><strong>MozMEC:</strong> Website institucional para o Ministério da Educação, design responsivo e moderno.</li>
+            <li><i>🧩</i><strong>Gestão de Seguros:</strong> Sistema para gestão de apólices e clientes, dashboard de acompanhamento.</li>
         </ul>
     </section>
     <section class="projects-section">
-        <h2>Meus Projectos</h2>
+    <div class="section-title"><i>🚀</i> Meus Projectos</div>
         <div class="projects-grid">
             <div class="project-card">
                 <img src="images/acfinance.png" alt="ACFinance Dashboard">
-                <h3>Microcrédito (ACFinance)</h3>
+                <h3><i>🧩</i> Microcrédito (ACFinance)</h3>
                 <p>Sistema de gestão de microcrédito online, com dashboard moderno e relatórios financeiros.</p>
                 <a href="https://acfinance.online/" target="_blank">Ver Projeto</a>
             </div>
             <div class="project-card">
                 <img src="images/intellica.png" alt="Intellica Dashboard">
-                <h3>ERP LRP Tecnologia</h3>
+                <h3><i>🧩</i> ERP LRP Tecnologia</h3>
                 <p>ERP completo para gestão empresarial, com dashboards interativos e controle de processos.</p>
                 <a href="https://sistema.lrptecnologia.com.br/" target="_blank">Ver Projeto</a>
             </div>
             <div class="project-card">
                 <img src="images/up.png" alt="Gestão de Água">
-                <h3>Gestão de Água</h3>
+                <h3><i>🧩</i> Gestão de Água</h3>
                 <p>Sistema para gestão de consumo e faturação de água, com painel administrativo intuitivo.</p>
                 <a href="https://agua-gestao.actecn.com/" target="_blank">Ver Projeto</a>
             </div>
             <div class="project-card">
                 <img src="images/up12.png" alt="BarCandy Dashboard">
-                <h3>Gestão de BarCandy</h3>
+                <h3><i>🧩</i> Gestão de BarCandy</h3>
                 <p>Plataforma para gestão de bares e inventário, com dashboard de vendas e estoque.</p>
                 <a href="https://barcandy.actecn.com/" target="_blank">Ver Projeto</a>
             </div>
             <div class="project-card">
                 <img src="images/GIZ-logo-modified.png" alt="MozMEC">
-                <h3>MozMEC</h3>
+                <h3><i>🌐</i> MozMEC</h3>
                 <p>Website institucional para o Ministério da Educação, com design responsivo e moderno.</p>
                 <a href="https://mozmec.co.mz/" target="_blank">Ver Projeto</a>
             </div>
             <div class="project-card">
                 <img src="images/acfinance.png" alt="Gestão de Seguros">
-                <h3>Gestão de Seguros</h3>
+                <h3><i>🧩</i> Gestão de Seguros</h3>
                 <p>Sistema para gestão de apólices e clientes, com dashboard de acompanhamento.</p>
                 <a href="http://renato.actecn.com/" target="_blank">Ver Projeto</a>
             </div>
