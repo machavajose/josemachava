@@ -93,7 +93,151 @@
     });
     </script>
 </head>
+    <style>
+        #three-canvas {
+            width: 100vw;
+            height: 60vh;
+            display: block;
+            background: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .hero-3d {
+            position: absolute;
+            top: 10vh;
+            left: 0;
+            width: 100vw;
+            text-align: center;
+            z-index: 2;
+            color: #fff;
+        }
+        .hero-3d h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px #000a;
+        }
+        .hero-3d p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .cta-btn {
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px #0005;
+            transition: background 0.3s;
+        }
+        .cta-btn:hover {
+            background: #e65100;
+        }
+        .projects-section {
+            margin-top: 65vh;
+            padding: 3rem 0 2rem 0;
+            background: #232526;
+            color: #fff;
+            text-align: center;
+        }
+        .projects-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .projects-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .project-card {
+            background: #2c2c2c;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px #0005;
+            width: 340px;
+            padding: 1.5rem;
+            text-align: left;
+            transition: transform 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.03);
+        }
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        .project-card h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .project-card p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .project-card a {
+            color: #ff9800;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        // Three.js 3D Animation
+        const scene = new THREE.Scene();
+        scene.background = null;
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.6), 0.1, 1000);
+        camera.position.z = 5;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+        const canvas = renderer.domElement;
+        canvas.id = 'three-canvas';
+        document.body.prepend(canvas);
+
+        // 3D Object: Rotating Torus Knot
+        const geometry = new THREE.TorusKnotGeometry(1, 0.4, 120, 16);
+        const material = new THREE.MeshStandardMaterial({ color: 0xff9800, metalness: 0.7, roughness: 0.2 });
+        const torusKnot = new THREE.Mesh(geometry, material);
+        scene.add(torusKnot);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+        scene.add(ambientLight);
+        const pointLight = new THREE.PointLight(0xff9800, 1, 100);
+        pointLight.position.set(5, 5, 5);
+        scene.add(pointLight);
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            torusKnot.rotation.x += 0.01;
+            torusKnot.rotation.y += 0.015;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+        });
+    });
+    </script>
 <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
+    <div class="hero-3d">
+        <h1>Jose Machava</h1>
+        <p>Desenvolvedor Web & Especialista em Soluções Digitais</p>
+        <button class="cta-btn" onclick="document.querySelector('.projects-section').scrollIntoView({behavior: 'smooth'})">Ver Projetos</button>
+    </div>
     <div class="hero-3d">
         <h1>Jose Machava</h1>
         <p>Desenvolvedor Web & Especialista em Soluções Digitais</p>
@@ -177,12 +321,55 @@
                 <!-- ... (resto do código mantido) ... -->
             </nav>
             <a href="Home.html" data-page-id="734010139" class="u-image u-logo u-image-1" data-image-width="308" data-image-height="53">
-                <img src="images/YOURLOGO.png" class="u-logo-image u-logo-image-1">
+                <img src="images/joseph-Photoroom.png" class="u-logo-image u-logo-image-1" style="border-radius: 50%; width: 80px; height: 80px; object-fit: cover;">
             </a>
         </div>
     </header>
     
     <!-- ... (resto do conteúdo mantido igual) ... -->
+    <section class="projects-section">
+        <h2>Meus Projectos</h2>
+        <div class="projects-grid">
+            <!-- Websites Institucionais -->
+            <div class="project-card">
+                <img src="images/acfinance.png" alt="ACFinance Dashboard">
+                <h3>Microcrédito (ACFinance)</h3>
+                <p>Sistema de gestão de microcrédito online, com dashboard moderno e relatórios financeiros.</p>
+                <a href="https://acfinance.online/" target="_blank">Ver Projeto</a>
+            </div>
+            <div class="project-card">
+                <img src="images/intellica.png" alt="Intellica Dashboard">
+                <h3>ERP LRP Tecnologia</h3>
+                <p>ERP completo para gestão empresarial, com dashboards interativos e controle de processos.</p>
+                <a href="https://sistema.lrptecnologia.com.br/" target="_blank">Ver Projeto</a>
+            </div>
+            <div class="project-card">
+                <img src="images/up.png" alt="Gestão de Água">
+                <h3>Gestão de Água</h3>
+                <p>Sistema para gestão de consumo e faturação de água, com painel administrativo intuitivo.</p>
+                <a href="https://agua-gestao.actecn.com/" target="_blank">Ver Projeto</a>
+            </div>
+            <div class="project-card">
+                <img src="images/up12.png" alt="BarCandy Dashboard">
+                <h3>Gestão de BarCandy</h3>
+                <p>Plataforma para gestão de bares e inventário, com dashboard de vendas e estoque.</p>
+                <a href="https://barcandy.actecn.com/" target="_blank">Ver Projeto</a>
+            </div>
+            <div class="project-card">
+                <img src="images/GIZ-logo-modified.png" alt="MozMEC">
+                <h3>MozMEC</h3>
+                <p>Website institucional para o Ministério da Educação, com design responsivo e moderno.</p>
+                <a href="https://mozmec.co.mz/" target="_blank">Ver Projeto</a>
+            </div>
+            <div class="project-card">
+                <img src="images/acfinance.png" alt="Gestão de Seguros">
+                <h3>Gestão de Seguros</h3>
+                <p>Sistema para gestão de apólices e clientes, com dashboard de acompanhamento.</p>
+                <a href="http://renato.actecn.com/" target="_blank">Ver Projeto</a>
+            </div>
+            <!-- Adicione mais cards conforme necessário -->
+        </div>
+    </section>
     
 </body>
 </html>
