@@ -3,6 +3,119 @@
 <head>
     <!-- ... (cabeçalho mantido igual) ... -->
     <style>
+        .main-header {
+            width: 100vw;
+            background: #fff;
+            box-shadow: 0 2px 16px #0002;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        .main-header .u-sheet-1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 2rem;
+        }
+        .main-header nav {
+            flex: 1;
+        }
+        .main-header ul.u-nav-1 {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .main-header ul.u-nav-1 li {
+            font-size: 1.1rem;
+        }
+        .main-header ul.u-nav-1 a {
+            color: #232526;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .main-header ul.u-nav-1 a:hover, .main-header ul.u-nav-1 .active {
+            background: #232526;
+            color: #fff;
+        }
+        .main-header .u-logo-image-1 {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            box-shadow: 0 2px 10px #0002;
+        }
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            min-height: 70vh;
+            background: #fff;
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+        .hero-text {
+            max-width: 500px;
+        }
+        .hero-text h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #232b79;
+            margin-bottom: 1.2rem;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #232526;
+            margin-bottom: 1.5rem;
+        }
+        .hero-text .highlight {
+            font-weight: bold;
+            color: #232b79;
+            margin-bottom: 1rem;
+        }
+        .contact-btn {
+            background: #232b79;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px #0002;
+            transition: background 0.3s;
+        }
+        .contact-btn:hover {
+            background: #ff9800;
+            color: #232526;
+        }
+        .hero-photo {
+            width: 320px;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px #232b7922;
+            background: #f5f5f5;
+        }
+        @media (max-width: 900px) {
+            .hero-section {
+                flex-direction: column;
+                gap: 2rem;
+                min-height: 60vh;
+            }
+            .hero-photo {
+                width: 90vw;
+                height: auto;
+                max-width: 320px;
+            }
+        }
         .hero-3d h1 {
             font-size: 3.2rem;
             font-weight: bold;
@@ -630,6 +743,51 @@
     });
     </script>
 <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
+    <header class="main-header">
+        <div class="u-sheet-1">
+            <a href="Home.html" data-page-id="734010139" class="u-image u-logo u-image-1" data-image-width="308" data-image-height="53">
+                <img src="images/joseph-Photoroom.png" class="u-logo-image u-logo-image-1">
+            </a>
+            <nav>
+                <div class="u-custom-menu u-nav-container">
+                    <ul class="u-nav u-nav-1">
+                        <li class="u-nav-item"><a href="Home.html" class="active">HOME</a></li>
+                        <li class="u-nav-item"><a href="#sobre">SOBRE</a></li>
+                        <li class="u-nav-item"><a href="#contacto">CONTACTO</a></li>
+                        <li class="u-nav-item u-nav-dropdown">
+                            <a href="#">💻 PROJECTOS ▾</a>
+                            <ul class="u-nav u-nav-2" style="background: #fff; border-radius: 8px; padding: 1rem; position: absolute; display: none; box-shadow: 0 2px 16px #0002;">
+                                <li style="font-weight: bold; color: #232b79;">🌐 Websites Institucionais</li>
+                                <li><a href="https://mozmec.co.mz/" target="_blank">MozMEC</a></li>
+                                <li><a href="https://lifenutricsmozambique.co.mz/" target="_blank">Life Nutrics Mozambique</a></li>
+                                <li><a href="https://asea.co.mz/asea/" target="_blank">ASEA Moçambique</a></li>
+                                <li><a href="https://nata.midia.co.mz/" target="_blank">Nata Midia</a></li>
+                                <li style="font-weight: bold; color: #232b79; margin-top: 1rem;">🛍️ E-commerces</li>
+                                <li><a href="https://bellahealthy.co.mz/" target="_blank">Bella Healthy</a></li>
+                                <li><a href="https://lojatecnoland.com/" target="_blank">Loja TecnoLand</a></li>
+                                <li style="font-weight: bold; color: #232b79; margin-top: 1rem;">🧩 Sistemas de Gestão</li>
+                                <li><a href="https://acfinance.online/" target="_blank">Microcrédito (ACFinance)</a></li>
+                                <li><a href="https://agua-gestao.actecn.com/" target="_blank">Gestão de Água</a></li>
+                                <li><a href="https://barcandy.actecn.com/" target="_blank">Gestão de BarCandy</a></li>
+                                <li><a href="http://renato.actecn.com/" target="_blank">Gestão de Seguros</a></li>
+                                <li><a href="https://sistema.lrptecnologia.com.br/" target="_blank">ERP LRP Tecnologia</a></li>
+                                <li><a href="https://pdvdemo.innotechh.com/" target="_blank">Sistema de PDV (Point of Sale)</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="hero-section" id="sobre">
+        <div class="hero-text">
+            <h1>José Junito Alberto Machava</h1>
+            <p>Sou um profissional, apaixonado pela tecnologia e suas aplicações para melhorar a vida das pessoas e das empresas. Com uma licenciatura em Informática, tenho conhecimentos sólidos em linguagens de programação, arquitetura de sistemas, bancos de dados, desenvolvimento web e mobile, entre outras áreas relevantes. Minha ética de trabalho é baseada em comprometimento, responsabilidade e respeito aos prazos e expectativas dos meus clientes.<br><br>Estou sempre em busca de atualizações e aprimoramentos para garantir a qualidade do meu trabalho e a satisfação dos meus clientes.</p>
+            <div class="highlight">Sou apaixonado por ensinar e aprender.</div>
+            <a href="#contacto"><button class="contact-btn">ENTRAR EM CONTACTO</button></a>
+        </div>
+        <img src="images/joseph-Photoroom.png" alt="Foto Jose Machava" class="hero-photo">
+    </section>
     <header class="main-header">
         <div class="u-sheet-1">
             <a href="Home.html" data-page-id="734010139" class="u-image u-logo u-image-1" data-image-width="308" data-image-height="53">
